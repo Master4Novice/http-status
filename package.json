@@ -1,0 +1,40 @@
+{
+  "name": "@master4n/http-status",
+  "version": "1.0.0",
+  "description": "HttpStatus Enum In Typescript",
+  "main": "cjs/index.cjs",
+  "module": "es/index.mjs",
+  "types": "index.d.ts",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && rollup --config",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Master4Novice/common.git"
+  },
+  "keywords": [
+    "HttpStatus",
+    "Typescript",
+    "commonjs",
+    "es"
+  ],
+  "author": "dwivna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Master4Novice/common/issues"
+  },
+  "homepage": "https://github.com/Master4Novice/common#readme",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@master4n/types": "1.0.3"
+  },
+  "publishConfig": {
+    "directory": "dist",
+    "access": "public"
+  }
+}
