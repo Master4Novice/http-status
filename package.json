@@ -1,6 +1,6 @@
 {
   "name": "@master4n/http-status",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HttpStatus Enum In Typescript",
   "main": "cjs/index.cjs",
   "module": "es/index.mjs",
@@ -31,7 +31,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@master4n/types": "1.0.3"
+    "@master4n/types": "^1.0.4"
   },
   "publishConfig": {
     "directory": "dist",
