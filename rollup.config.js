@@ -1,8 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
-import replace from '@rollup/plugin-replace';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
-import resolve from '@rollup/plugin-node-resolve';
 
 const config = [
   {
@@ -19,13 +17,7 @@ const config = [
             sourcemap: true,
          }
     ],
-    external: [ "@master4n/types" ],
     plugins: [
-        resolve(),
-        replace({
-          "/types/dist":"/types",
-          "preventAssignment": true
-        }),
         typescript(),
         copy({
           targets: [

@@ -13,10 +13,11 @@ Files were exported from the package from latest release.
 ````ts
 import { HttpStatus } from @master4n/http-status
 
-HttpStatus.OK.toString() // This will give string value.
-HttpStatus.OK.value() // This will give status code as number.
-
-// All possible HttpStatus added
+HttpStatus.OK.name // This will give string value.
+HttpStatus.OK.value // This will give status code as number.
+HttpStatus.valueOf(200) // This will give HttpStatus OK as string[]
+HttpStatus.values() // This will give all status as string
+// All possible new HttpStatus added
 ````
 
 ## Available Status Details
@@ -82,7 +83,7 @@ HttpStatus.OK.value() // This will give status code as number.
   
 ### Additional Details
 
-* Last updated: Sat, 23 Dec 2023
+* Last updated: Thu, 28 Dec 2023
 * Dependencies: none
 
 ## Credits

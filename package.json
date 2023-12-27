@@ -1,7 +1,7 @@
 {
   "name": "@master4n/http-status",
   "version": "1.0.2",
-  "description": "HttpStatus Enum In Typescript",
+  "description": "new HttpStatus Enum In Typescript",
   "main": "cjs/index.cjs",
   "module": "es/index.mjs",
   "types": "index.d.ts",
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/Master4Novice/common.git"
   },
   "keywords": [
-    "HttpStatus",
+    "new HttpStatus",
     "Typescript",
     "commonjs",
     "es"
@@ -29,9 +29,6 @@
   "homepage": "https://github.com/Master4Novice/common#readme",
   "devDependencies": {
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@master4n/types": "^1.0.4"
   },
   "publishConfig": {
     "directory": "dist",
