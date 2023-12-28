@@ -4,7 +4,7 @@
 
 ## Summary
 
-This package contains type definitions for Master4Novice.
+This package contains enum status and value for http.
 
 ## Details
 
