@@ -60,7 +60,7 @@ export class HttpStatus {
         return Object.keys(this);
     }; 
 
-    static valueOf(param: String | Number) {
+    static valueOf(param: string | number) {
         const keys = this.values();
         let httpStatus: HttpStatus
         return keys.filter((key)=> { 
