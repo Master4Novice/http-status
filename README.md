@@ -80,11 +80,6 @@ HttpStatus.values() // This will give all status as string
   |INSUFFICIENT_STORAGE|507|Insufficient Storage|
   |LOOP_DETECTED|508|Loop Detected|
   |NOT_EXTENDED|510|Not Extended|
-  
-### Additional Details
-
-* Last updated: Thu, 28 Dec 2023
-* Dependencies: none
 
 ## Credits
 
