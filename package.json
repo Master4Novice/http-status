@@ -1,6 +1,6 @@
 {
   "name": "@master4n/http-status",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "HttpStatus Enum Library",
   "main": "./commonjs/index.cjs",
   "module": "./esm/index.js",
