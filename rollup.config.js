@@ -1,23 +1,25 @@
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
+import terser from '@rollup/plugin-terser';
 
 const config = [
   {
     input: 'src/index.ts',
     output: [
         {
-           file: 'dist/index.cjs',
+           file: 'dist/commonjs/index.cjs',
            format: 'cjs',
            sourcemap: true,
         },
         {
-            file: 'dist/index.js',
+            file: 'dist/esm/index.js',
             format: 'esm',
             sourcemap: true,
          }
     ],
     plugins: [
+        terser(),
         typescript({
           tsconfig: 'tsconfig.json'
         }),
