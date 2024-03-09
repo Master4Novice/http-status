@@ -34,5 +34,10 @@
   "publishConfig": {
     "directory": "dist",
     "access": "public"
-  }
+  },
+  "contributors": [
+    {
+      "name": "dwivna"
+    }
+  ]
 }
