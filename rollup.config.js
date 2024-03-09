@@ -7,18 +7,20 @@ const config = [
     input: 'src/index.ts',
     output: [
         {
-           file: 'dist/cjs/index.cjs',
+           file: 'dist/index.cjs.js',
            format: 'cjs',
            sourcemap: true,
         },
         {
-            file: 'dist/es/index.mjs',
-            format: 'es',
+            file: 'dist/index.esm.js',
+            format: 'esm',
             sourcemap: true,
          }
     ],
     plugins: [
-        typescript(),
+        typescript({
+          tsconfig: 'tsconfig.json'
+        }),
         copy({
           targets: [
             { src: ["package.json", "README.md", "../../LICENSE"], dest: "dist" }
@@ -32,7 +34,9 @@ const config = [
       format: 'es'
     },
     plugins: [
-        dts()
+        dts({
+          tsconfig: 'tsconfig.json'
+        })
     ]
   }
 ];

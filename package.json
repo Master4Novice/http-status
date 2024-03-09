@@ -1,15 +1,19 @@
 {
   "name": "@master4n/http-status",
   "version": "1.0.6",
-  "description": "HttpStatus Enum In Typescript",
-  "main": "cjs/index.cjs",
-  "module": "es/index.mjs",
-  "types": "index.d.ts",
+  "description": "HttpStatus Enum Library",
+  "main": ".index/.cjs.js",
+  "module": "./index.esm.js",
+  "types": "./index.d.ts",
   "type": "module",
+  "exports":{
+    "import": "./index.esm.js",
+    "require": "./index.cjs.js",
+    "types": "./index.d.ts"
+  },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && rollup --config",
-    "test": "jest"
+    "build": "npm run clean && rollup --config"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,7 @@
     "HttpStatus",
     "Typescript",
     "commonjs",
-    "es"
+    "module"
   ],
   "author": "dwivna",
   "license": "MIT",
@@ -27,9 +31,6 @@
     "url": "https://github.com/Master4Novice/common/issues"
   },
   "homepage": "https://github.com/Master4Novice/common#readme",
-  "devDependencies": {
-    "typescript": "^5.3.3"
-  },
   "publishConfig": {
     "directory": "dist",
     "access": "public"
