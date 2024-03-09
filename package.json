@@ -1,12 +1,12 @@
 {
   "name": "@master4n/http-status",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "HttpStatus Enum Library",
   "main": "./index.cjs",
   "module": "./index.js",
   "types": "./index.d.ts",
   "type": "module",
-  "exports":{
+  "exports": {
     "import": "./index.js",
     "require": "./index.cjs",
     "types": "./index.d.ts"
