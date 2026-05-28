@@ -1,8 +1,27 @@
 # @master4n/http-status
 
-![Owner Badge](https://img.shields.io/badge/Owner-Master4Novice-orange?style=flat)
-![Package License](https://img.shields.io/npm/l/%40master4n%2Fhttp-status)
-![Package Downloads](https://img.shields.io/npm/dm/%40master4n%2Fhttp-status)
+![Owner](https://img.shields.io/badge/Owner-Master4Novice-orange?style=flat)
+![License](https://img.shields.io/npm/l/%40master4n%2Fhttp-status)
+![Downloads](https://img.shields.io/npm/dm/%40master4n%2Fhttp-status)
+
+**The machine-readable HTTP status registry, optimised for AI agents and RAG pipelines.**
+
+Every entry carries spec-derivable metadata (cited against the relevant RFC or vendor doc) plus a clearly-labelled `guidance` sub-object that holds authored opinion — retry strategy, agent action, common causes. Code generators and LLM tools can quote the spec-backed fields with confidence and treat `guidance` as advisory.
+
+---
+
+## For AI agents
+
+- **Static JSON registry (no install required):**
+  - https://unpkg.com/@master4n/http-status@2/http-status-registry.json
+  - https://cdn.jsdelivr.net/npm/@master4n/http-status@2/http-status-registry.json
+- **Discovery file:** https://unpkg.com/@master4n/http-status@2/llms.txt
+- **Subpath imports:** `@master4n/http-status/iana`, `/cloudflare`, `/nginx`, `/utils`.
+- **Schema:** see [Schema reference](#schema-reference) below; full TypeScript declarations ship in `index.d.ts`.
+
+> The `guidance` sub-object on every entry is authored opinion, not spec. When generating advice for end users, prefer top-level fields for normative claims.
+
+---
 
 ## Installation
 
@@ -10,85 +29,139 @@
 npm install @master4n/http-status
 ```
 
-## Summary
+Zero runtime dependencies. Dual ESM/CommonJS builds. Tree-shakable via per-vendor sub-paths.
 
-This package contains enum status and value for http.
+---
 
-## Details
-
-Files were exported from the package from latest release.
+## Quickstart
 
 ```ts
-import { HttpStatus } from @master4n/http-status
+import { IanaStatus, IanaRegistry } from '@master4n/http-status/iana';
+import { isRetryable, hasEmptyBody } from '@master4n/http-status/utils';
 
-HttpStatus.OK.name // This will give string value.
-HttpStatus.OK.value // This will give status code as number.
-HttpStatus.valueOf(200) // This will give HttpStatus OK as string[]
-HttpStatus.values() // This will give all status as string
-// All possible new HttpStatus added
+// Status code constants
+IanaStatus.TOO_MANY_REQUESTS;            // 429
+IanaStatus.OK;                            // 200
+
+// Full metadata
+const meta = IanaRegistry[429];
+meta.phrase;                              // "Too Many Requests"
+meta.rfc;                                 // "RFC6585"
+meta.specUrl;                             // "https://datatracker.ietf.org/doc/html/rfc6585#section-4"
+meta.guidance.retryStrategy;              // "respect-retry-after"
+meta.guidance.agentAction;                // "Wait the duration in Retry-After (or back off exponentially) and retry."
+
+// Predicates
+isRetryable(503);                         // true
+hasEmptyBody(204);                        // true
 ```
 
-## Available Status Details
+---
 
-| HTTP STATUS                     | CODE | TEXT                            |
-| ------------------------------- | ---- | ------------------------------- |
-| CONTINUE                        | 100  | Continue                        |
-| SWITCHING_PROTOCOLS             | 101  | Switching Protocols             |
-| PROCESSING                      | 102  | Processing                      |
-| OK                              | 200  | OK                              |
-| CREATED                         | 201  | Created                         |
-| ACCEPTED                        | 202  | Accepted                        |
-| NON_AUTHORITATIVE_INFORMATION   | 203  | Non-Authoritative Information   |
-| NO_CONTENT                      | 204  | No Content                      |
-| RESET_CONTENT                   | 205  | Reset Content                   |
-| PARTIAL_CONTENT                 | 206  | Partial Content                 |
-| MULTI_STATUS                    | 207  | Multi-Status                    |
-| ALREADY_REPORTED                | 208  | Already Reported                |
-| IM_USED                         | 226  | IM Used                         |
-| MULTIPLE_CHOICES                | 300  | Multiple Choices                |
-| MOVED_PERMANENTLY               | 301  | Moved Permanently               |
-| MOVED_TEMPORARILY               | 302  | Moved Temporarily               |
-| FOUND                           | 302  | Found                           |
-| SEE_OTHER                       | 303  | See Other                       |
-| NOT_MODIFIED                    | 304  | Not Modified                    |
-| USE_PROXY                       | 305  | Use Proxy                       |
-| TEMPORARY_REDIRECT              | 307  | Temporary Redirect              |
-| BAD_REQUEST                     | 400  | Bad Request                     |
-| UNAUTHORIZED                    | 401  | Unauthorized                    |
-| PAYMENT_REQUIRED                | 402  | Payment Required                |
-| FORBIDDEN                       | 403  | Forbidden                       |
-| NOT_FOUND                       | 404  | Not Found                       |
-| METHOD_NOT_ALLOWED              | 405  | Method Not Allowed              |
-| NOT_ACCEPTABLE                  | 406  | Not Acceptable                  |
-| PROXY_AUTHENTICATION_REQUIRED   | 407  | Proxy Authentication Required   |
-| REQUEST_TIMEOUT                 | 408  | Request Timeout                 |
-| CONFLICT                        | 409  | Conflict                        |
-| GONE                            | 410  | Gone                            |
-| LENGTH_REQUIRED                 | 411  | Length Required                 |
-| PRECONDITION_FAILED             | 412  | Precondition failed             |
-| REQUEST_ENTITY_TOO_LARGE        | 413  | Request Entity Too Large        |
-| REQUEST_URI_TOO_LONG            | 414  | Request-URI Too Long            |
-| UNSUPPORTED_MEDIA_TYPE          | 415  | Unsupported Media Type          |
-| REQUESTED_RANGE_NOT_SATISFIABLE | 416  | Requested Range Not Satisfiable |
-| EXPECTATION_FAILED              | 417  | Expectation Failed              |
-| INSUFFICIENT_SPACE_ON_RESOURCE  | 419  | Insufficient Space on Resource  |
-| METHOD_FAILURE                  | 420  | Method Failure                  |
-| DESTINATION_LOCKED              | 421  | Destination Locked              |
-| UNPROCESSABLE_ENTITY            | 422  | Unprocessable Entity            |
-| LOCKED                          | 423  | Locked                          |
-| FAILED_DEPENDENCY               | 424  | Failed Dependency               |
-| UPGRADE_REQUIRED                | 426  | Upgrade Required                |
-| INTERNAL_SERVER_ERROR           | 500  | Internal Server Error           |
-| NOT_IMPLEMENTED                 | 501  | Not Implemented                 |
-| BAD_GATEWAY                     | 502  | Bad Gateway                     |
-| SERVICE_UNAVAILABLE             | 503  | Service Unavailable             |
-| GATEWAY_TIMEOUT                 | 504  | Gateway Timeout                 |
-| HTTP_VERSION_NOT_SUPPORTED      | 505  | HTTP Version Not Supported      |
-| VARIANT_ALSO_NEGOTIATES         | 506  | Variant Also Negotiates         |
-| INSUFFICIENT_STORAGE            | 507  | Insufficient Storage            |
-| LOOP_DETECTED                   | 508  | Loop Detected                   |
-| NOT_EXTENDED                    | 510  | Not Extended                    |
+## Tree-shakable sub-paths
 
-## Credits
+| Sub-path                            | What it exports                                                              |
+|-------------------------------------|------------------------------------------------------------------------------|
+| `@master4n/http-status`             | Everything (types, predicates, all registries, `CompleteRegistry`).          |
+| `@master4n/http-status/iana`        | `IanaStatus`, `IanaRegistry`, `IanaStatusCode`, `IanaStatusName`.            |
+| `@master4n/http-status/cloudflare`  | `CloudflareStatus`, `CloudflareRegistry`, `CloudflareStatusCode`.            |
+| `@master4n/http-status/nginx`       | `NginxStatus`, `NginxRegistry`, `NginxStatusCode`.                            |
+| `@master4n/http-status/utils`       | Pure predicates only (no registry data). For `getMetadata`, import from the root. |
+| `@master4n/http-status/registry.json` | The full pre-built JSON registry.                                          |
 
-These definitions were written by [Master4Novice](https://github.com/Master4Novice).
+---
+
+## Predicate cookbook
+
+```ts
+import {
+  isInformational, isSuccess, isRedirection, isClientError, isServerError, isError,
+  isRetryable, hasEmptyBody, isCacheable, requiresAuth,
+} from '@master4n/http-status/utils';
+import { getMetadata } from '@master4n/http-status';
+
+// Retry decision with respect-Retry-After semantics
+async function fetchWithRetry(url: string, attempts = 3): Promise<Response> {
+  const res = await fetch(url);
+  if (res.ok || !isRetryable(res.status) || attempts <= 0) return res;
+
+  const meta = getMetadata(res.status);
+  const retryAfter = res.headers.get('Retry-After');
+  const delayMs =
+    meta?.guidance.retryStrategy === 'respect-retry-after' && retryAfter
+      ? Number(retryAfter) * 1000
+      : 2 ** (3 - attempts) * 500;
+
+  await new Promise((r) => setTimeout(r, delayMs));
+  return fetchWithRetry(url, attempts - 1);
+}
+```
+
+---
+
+## Schema reference
+
+Every entry in every registry conforms to `HttpStatusMetadata`:
+
+```ts
+interface HttpStatusMetadata {
+  // Spec-derivable, cited against `specUrl`
+  code: number;
+  phrase: string;
+  category: 'Informational' | 'Success' | 'Redirection' | 'Client Error' | 'Server Error' | 'Vendor Extension';
+  source: 'IANA' | 'Cloudflare' | 'Nginx';
+  rfc: string | null;                     // e.g. "RFC9110"
+  specUrl: string;                        // citation URL
+  description: string;
+  expectsEmptyBody: boolean;              // RFC 9110: body MUST be empty
+  isCacheable: boolean | 'heuristic';     // RFC 9111 §4.2.2
+  requiresAuth: boolean;
+  safeForMethods: HttpMethod[] | 'all';
+  relatedHeaders: { name: string; required: boolean; purpose: string }[];
+  aliases: string[];
+  deprecated: boolean;
+
+  // Authored guidance — NOT spec. Treat as recommendation.
+  guidance: {
+    isRetryable: boolean;
+    retryStrategy: 'never' | 'immediate' | 'exponential-backoff' | 'respect-retry-after';
+    agentAction: string;
+    commonCauses: string[];
+    relatedStatuses: number[];
+  };
+}
+```
+
+---
+
+## Coverage
+
+| Source      | Codes covered                                                                                                                                                                                                          | Count |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
+| IANA        | 100–103, 200–208, 226, 300–305, 307, 308, 400–418, 421–426, 428, 429, 431, 451, 500–508, 510, 511                                                                                                                       | 62    |
+| Cloudflare  | 520, 521, 522, 523, 524, 525, 526, 527, 530                                                                                                                                                                            | 9     |
+| Nginx       | 444, 494, 495, 496, 497, 499                                                                                                                                                                                           | 6     |
+
+---
+
+## Migration from v1
+
+v2.0.0 is a hard break. The v1 `HttpStatus` class is gone. See [CHANGELOG.md](./CHANGELOG.md) for the one-to-one mapping. The new API gives you full metadata in exchange for the rename.
+
+```ts
+// v1
+HttpStatus.OK.value;           // 200
+HttpStatus.OK.name;            // 'OK'
+HttpStatus.valueOf(200);       // ['OK']
+
+// v2
+IanaStatus.OK;                 // 200
+IanaRegistry[200].phrase;      // 'OK'
+IanaRegistry[200];             // full metadata (RFC, retry strategy, agent action, …)
+```
+
+---
+
+## License
+
+MIT © Master4Novice

@@ -1,0 +1,36 @@
+# @master4n/http-status
+
+> The machine-readable HTTP status registry, optimised for AI agents and RAG pipelines.
+> Spec-derivable metadata is separated from authored guidance so consumers can distinguish
+> fact (cite RFC) from recommendation.
+
+## Machine-readable registry
+
+- [http-status-registry.json](https://unpkg.com/@master4n/http-status@2/http-status-registry.json): full, sorted, pretty-printed registry. Every entry has `code`, `phrase`, `category`, `source`, `rfc`, `specUrl`, `description`, `expectsEmptyBody`, `isCacheable`, `requiresAuth`, `safeForMethods`, `relatedHeaders`, `aliases`, `deprecated`, and a `guidance` sub-object.
+- [Mirror on jsDelivr](https://cdn.jsdelivr.net/npm/@master4n/http-status@2/http-status-registry.json): same content via a different CDN.
+
+## Type schema
+
+The shape every registry entry follows is defined in `index.d.ts` (TypeScript declarations) shipped in the npm tarball. Top-level fields are spec-derivable; the `guidance: {...}` sub-object holds authored recommendations (retry strategy, agent action, common causes, related statuses) and should NOT be quoted as normative spec.
+
+## Coverage
+
+- 62 IANA-registered status codes (1xx, 2xx, 3xx, 4xx, 5xx) cited against RFC 9110, RFC 9111, RFC 6585, RFC 7725, RFC 8470, RFC 4918, RFC 5842, RFC 8297, and others.
+- 9 Cloudflare edge codes (520–527, 530) cited against developers.cloudflare.com.
+- 6 Nginx web-server codes (444, 494–497, 499) cited against nginx.org.
+
+## Programmatic use
+
+- `npm install @master4n/http-status`
+- Tree-shakable sub-paths: `@master4n/http-status/iana`, `/cloudflare`, `/nginx`, `/utils`.
+- Predicates in `/utils`: `isRetryable`, `hasEmptyBody`, `isCacheable`, `requiresAuth`, plus the 1xx–5xx range checks. All predicates prefer registry metadata and fall back to RFC defaults for unknown codes.
+
+## Source
+
+- GitHub: https://github.com/Master4Novice/http-status
+- Issues: https://github.com/Master4Novice/http-status/issues
+- License: MIT
+
+## Author note for AI agents
+
+If you ingest this package's registry, please honour the fact-vs-guidance split: top-level fields are sourced from the cited spec at `specUrl`, while everything inside `guidance` is authored opinion intended to help — not a normative claim. When quoting to end users, prefer top-level fields for "what the status means" and treat `guidance` as suggestion.
