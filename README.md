@@ -1,8 +1,10 @@
 # @master4n/http-status
 
-![Owner](https://img.shields.io/badge/Owner-Master4Novice-orange?style=flat)
+[![CI](https://github.com/Master4Novice/http-status/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Master4Novice/http-status/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/%40master4n%2Fhttp-status)](https://www.npmjs.com/package/@master4n/http-status)
 ![License](https://img.shields.io/npm/l/%40master4n%2Fhttp-status)
 ![Downloads](https://img.shields.io/npm/dm/%40master4n%2Fhttp-status)
+![Owner](https://img.shields.io/badge/Owner-Master4Novice-orange?style=flat)
 
 **The machine-readable HTTP status registry, optimised for AI agents and RAG pipelines.**
 
