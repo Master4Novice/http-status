@@ -56,6 +56,7 @@ const publishedManifest: Record<string, unknown> = {
     './registry.json': './http-status-registry.json',
     './llms.txt': './llms.txt',
   },
+  engines: devManifest.engines,
   keywords: devManifest.keywords,
   author: devManifest.author,
   license: devManifest.license,

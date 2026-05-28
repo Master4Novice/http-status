@@ -23,7 +23,7 @@ The shape every registry entry follows is defined in `index.d.ts` (TypeScript de
 
 - `npm install @master4n/http-status`
 - Tree-shakable sub-paths: `@master4n/http-status/iana`, `/cloudflare`, `/nginx`, `/utils`.
-- Predicates in `/utils`: `isRetryable`, `hasEmptyBody`, `isCacheable`, `requiresAuth`, plus the 1xx–5xx range checks. All predicates prefer registry metadata and fall back to RFC defaults for unknown codes.
+- Predicates in `/utils` (`isRetryable`, `hasEmptyBody`, `isCacheable`, `requiresAuth`, plus the 1xx–5xx range checks) are pure functions over the status code — they do not load any registry data, so bundlers tree-shake them down to under 1 KB. For full per-code metadata (RFC, specUrl, guidance block, etc.) call `getMetadata(code)` from the package root (`@master4n/http-status`).
 
 ## Source
 

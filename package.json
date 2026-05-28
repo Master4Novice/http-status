@@ -38,6 +38,9 @@
     "url": "https://github.com/Master4Novice/http-status/issues"
   },
   "homepage": "https://github.com/Master4Novice/http-status#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "contributors": [
     {
       "name": "dwivna"
