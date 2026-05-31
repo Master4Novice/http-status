@@ -23,7 +23,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code instructing the server to close the connection without sending any response headers (used via "return 444;").',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -47,7 +47,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code returned when the request headers exceed large_client_header_buffers.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -71,7 +71,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code returned when client certificate verification fails.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -95,7 +95,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code returned when a client certificate was required but not provided.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: true,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -119,7 +119,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code returned when a plain HTTP request is sent to an HTTPS port.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -143,7 +143,7 @@ export const NginxRegistry: Readonly<Record<NginxStatusCode, HttpStatusMetadata>
     description:
       'Nginx-specific code logged when the client closes the connection while the server is still processing the request.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],

@@ -9,6 +9,7 @@ import {
   isRetryable,
   hasEmptyBody,
   isCacheable,
+  cacheability,
   requiresAuth,
 } from '../utils/index.js';
 import { getMetadata } from '../core/registry.js';
@@ -86,19 +87,37 @@ describe('hasEmptyBody', () => {
 });
 
 describe('isCacheable', () => {
-  it.each<[number, boolean | 'heuristic']>([
-    [200, 'heuristic'],
+  it.each<[number, boolean]>([
+    [200, true],
     [201, false],
-    [204, 'heuristic'],
-    [301, 'heuristic'],
+    [204, true],
+    [301, true],
     [302, false],
-    [308, 'heuristic'],
-    [404, 'heuristic'],
-    [410, 'heuristic'],
+    [308, true],
+    [404, true],
+    [410, true],
     [500, false],
     [600, false],
   ])('code %i → %s', (code, expected) => {
     expect(isCacheable(code)).toBe(expected);
+  });
+});
+
+describe('cacheability', () => {
+  it.each<[number, 'heuristic' | 'uncacheable']>([
+    [200, 'heuristic'],
+    [201, 'uncacheable'],
+    [301, 'heuristic'],
+    [302, 'uncacheable'],
+    [500, 'uncacheable'],
+  ])('code %i → %s', (code, expected) => {
+    expect(cacheability(code)).toBe(expected);
+  });
+
+  it('agrees with isCacheable', () => {
+    for (const code of [200, 201, 204, 302, 404, 500, 600]) {
+      expect(cacheability(code) === 'heuristic').toBe(isCacheable(code));
+    }
   });
 });
 

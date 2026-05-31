@@ -116,7 +116,7 @@ interface HttpStatusMetadata {
   specUrl: string;                        // citation URL
   description: string;
   expectsEmptyBody: boolean;              // RFC 9110: body MUST be empty
-  isCacheable: boolean | 'heuristic';     // RFC 9111 §4.2.2
+  cacheability: 'heuristic' | 'uncacheable'; // RFC 9111 §4.2.2 (was `isCacheable` in ≤2.0.0)
   requiresAuth: boolean;
   safeForMethods: HttpMethod[] | 'all';
   relatedHeaders: { name: string; required: boolean; purpose: string }[];

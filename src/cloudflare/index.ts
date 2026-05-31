@@ -29,7 +29,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'The origin server returned an empty, unknown, or unexpected response to Cloudflare.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -53,7 +53,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'The origin server refused the connection from Cloudflare. Cloudflare could not establish a TCP connection.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -77,7 +77,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Cloudflare could not negotiate a TCP handshake with the origin server before timing out.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -101,7 +101,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Cloudflare could not reach the origin server, commonly due to a routing/BGP issue or invalid DNS record.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -125,7 +125,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Cloudflare successfully connected and sent data to the origin, but the origin took too long to respond with an HTTP response.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -149,7 +149,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Cloudflare could not negotiate an SSL/TLS handshake with the origin server.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -173,7 +173,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Cloudflare could not validate the SSL certificate on the origin web server when SSL Full (strict) mode is active.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -197,7 +197,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'Indicates an error connecting between Cloudflare and the origin\'s Railgun (rwengine) server.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -222,7 +222,7 @@ export const CloudflareRegistry: Readonly<Record<CloudflareStatusCode, HttpStatu
     description:
       'A 530 response is typically returned alongside a Cloudflare 1xxx error displayed in the body, indicating an origin DNS or worker failure.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],

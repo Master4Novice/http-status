@@ -1,5 +1,29 @@
 # Changelog
 
+## 2.0.1
+
+API consistency for cacheability. (Released as a patch, but note the type changes
+below are technically breaking for code that read the old shapes.)
+
+### Changed
+
+- **`isCacheable(code)` now returns a plain `boolean`** (was `boolean | 'heuristic'`).
+  It returns `true` for heuristically-cacheable codes, consistent with the other
+  `is*` predicates. Code doing `isCacheable(c) === 'heuristic'` should switch to
+  the new `cacheability()` function.
+- **Metadata field `isCacheable` renamed to `cacheability`** with a clean string
+  enum: `'heuristic' | 'uncacheable'` (was `boolean | 'heuristic'`, which only ever
+  held `'heuristic'` or `false` in practice). Applies to every registry entry and
+  to `http-status-registry.json`.
+
+### Added
+
+- **`cacheability(code): 'heuristic' | 'uncacheable'`** — precise RFC 9111 §4.2.2
+  classification (the string form of `isCacheable`).
+- **`Cacheability` type** exported from the package root and `/utils`.
+- Documented the predicate input contract: predicates expect a real status int and
+  do not validate the domain (use `getMetadata` to detect unknown codes).
+
 ## 2.0.0 — BREAKING
 
 This is a clean break from v1. The library has been repositioned as a machine-readable HTTP status registry optimised for AI agents and RAG pipelines.

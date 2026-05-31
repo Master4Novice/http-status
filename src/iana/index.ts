@@ -86,7 +86,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The initial part of a request has been received and the client should continue to send the remainder of the request, or ignore the response if the request is already complete.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -112,7 +112,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server understands and is willing to comply with the client request, via the Upgrade header field, for a change in the application protocol being used on this connection.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -139,7 +139,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV interim response indicating that the server has accepted the complete request but has not yet completed it. Deprecated by some clients.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -163,7 +163,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Used to return some response headers before the final HTTP message, typically to allow the client to preload resources via Link headers.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -190,7 +190,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request has succeeded. The payload sent depends on the request method.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -214,7 +214,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request has been fulfilled and has resulted in one or more new resources being created. The primary resource URI is given by Location.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -240,7 +240,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request has been accepted for processing, but the processing has not been completed. The request might or might not be eventually acted upon.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -264,7 +264,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request was successful but the enclosed payload has been modified by a transforming proxy from that of the origin server.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -288,7 +288,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server has successfully fulfilled the request and there is no additional content to send in the response payload body.',
     expectsEmptyBody: true,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -312,7 +312,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server has fulfilled the request and desires that the user agent reset the document view which caused the request to be sent.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -336,7 +336,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: ['GET', 'HEAD'],
     relatedHeaders: [
@@ -363,7 +363,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: provides status for multiple independent operations in a single response (multistatus XML).',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -387,7 +387,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: used inside a 207 Multi-Status response to avoid repeatedly enumerating internal members of multiple bindings to the same collection.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -411,7 +411,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: ['GET'],
     relatedHeaders: [
@@ -439,7 +439,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is provided.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -465,7 +465,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource has been assigned a new permanent URI and any future references to this resource ought to use the enclosed URI.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -491,7 +491,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource resides temporarily under a different URI. The client should continue to use the original request URI for future requests.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -517,7 +517,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is redirecting the user agent to a different resource, as indicated by Location, that is intended to provide an indirect response to the original request.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -543,7 +543,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Indicates that the conditional request would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to false.',
     expectsEmptyBody: true,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: ['GET', 'HEAD'],
     relatedHeaders: [
@@ -571,7 +571,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Deprecated. The requested resource must be accessed through a specified proxy.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -595,7 +595,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method when following the redirect.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -621,7 +621,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource has been assigned a new permanent URI and the user agent MUST NOT change the request method when following the redirect.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -648,7 +648,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed syntax, invalid framing).',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -672,7 +672,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request has not been applied because it lacks valid authentication credentials for the target resource.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: true,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -698,7 +698,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Reserved for future use. Originally intended for digital payment systems.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -722,7 +722,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server understood the request but refuses to authorize it. Re-authenticating will not help.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -746,7 +746,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -770,7 +770,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The method received in the request-line is known by the origin server but not supported by the target resource.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -796,7 +796,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The target resource does not have a current representation that would be acceptable to the user agent according to the proactive negotiation header fields.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -822,7 +822,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Similar to 401 but indicates that the client needs to authenticate itself in order to use a proxy.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: true,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -848,7 +848,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server did not receive a complete request message within the time that it was prepared to wait.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -872,7 +872,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request could not be completed due to a conflict with the current state of the target resource.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -896,7 +896,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Access to the target resource is no longer available at the origin server and this condition is likely to be permanent.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -920,7 +920,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server refuses to accept the request without a defined Content-Length.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: ['POST', 'PUT', 'PATCH'],
     relatedHeaders: [
@@ -946,7 +946,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'One or more conditions given in the request header fields evaluated to false when tested on the server.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -973,7 +973,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is refusing to process a request because the request content is larger than the server is willing or able to process.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: ['POST', 'PUT', 'PATCH'],
     relatedHeaders: [
@@ -999,7 +999,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is refusing to service the request because the request-target is longer than the server is willing to interpret.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1023,7 +1023,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is refusing to service the request because the content is in a format not supported by this method on the target resource.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: ['POST', 'PUT', 'PATCH'],
     relatedHeaders: [
@@ -1050,7 +1050,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'None of the ranges in the request\'s Range header field overlap the current extent of the selected resource, or the set of ranges requested has been rejected.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: ['GET', 'HEAD'],
     relatedHeaders: [
@@ -1076,7 +1076,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The expectation given in the request\'s Expect header field could not be met by at least one of the inbound servers.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1100,7 +1100,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Any attempt to brew coffee with a teapot should result in the error code 418 I\'m a teapot. A joke status from the Hyper Text Coffee Pot Control Protocol.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1124,7 +1124,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority included in the request URI.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1148,7 +1148,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server understands the content type of the request content and the syntax of the request content is correct, but it was unable to process the contained instructions.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1172,7 +1172,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: the source or destination resource is locked.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1196,7 +1196,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: the method could not be performed on the resource because the requested action depended on another action which failed.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1220,7 +1220,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Indicates that the server is unwilling to risk processing a request that might be replayed (e.g., TLS 1.3 early data).',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -1246,7 +1246,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -1273,7 +1273,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The origin server requires the request to be conditional. Intended to prevent the lost update problem.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1297,7 +1297,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The user has sent too many requests in a given amount of time ("rate limiting").',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -1323,7 +1323,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is unwilling to process the request because its header fields are too large.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1347,7 +1347,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is denying access to the resource as a consequence of a legal demand.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1372,7 +1372,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server encountered an unexpected condition that prevented it from fulfilling the request.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1396,7 +1396,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server does not support the functionality required to fulfill the request.',
     expectsEmptyBody: false,
-    isCacheable: 'heuristic',
+    cacheability: 'heuristic',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1420,7 +1420,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server, while acting as a gateway or proxy, received an invalid response from an inbound server.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1444,7 +1444,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server is currently unable to handle the request due to a temporary overload or scheduled maintenance.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [
@@ -1470,7 +1470,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1494,7 +1494,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The server does not support, or refuses to support, the major version of HTTP that was used in the request.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1518,7 +1518,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Transparent content negotiation for the request results in a circular reference.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1542,7 +1542,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: the method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1566,7 +1566,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'WebDAV: the server terminated an operation because it encountered an infinite loop while processing a request with Depth: infinity.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1590,7 +1590,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'Further extensions to the request are required for the server to fulfill it.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: false,
     safeForMethods: 'all',
     relatedHeaders: [],
@@ -1614,7 +1614,7 @@ export const IanaRegistry: Readonly<Record<IanaStatusCode, HttpStatusMetadata>> 
     description:
       'The client needs to authenticate to gain network access. Intended for captive portals.',
     expectsEmptyBody: false,
-    isCacheable: false,
+    cacheability: 'uncacheable',
     requiresAuth: true,
     safeForMethods: 'all',
     relatedHeaders: [],

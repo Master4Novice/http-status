@@ -25,6 +25,14 @@ export type RetryStrategy =
   | 'exponential-backoff'
   | 'respect-retry-after';
 
+/**
+ * Cacheability classification by status code alone, per RFC 9111 §4.2.2.
+ * `'heuristic'`: a cache MAY store the response without explicit freshness
+ * headers. `'uncacheable'`: not cacheable by status alone (explicit
+ * `Cache-Control`/`Expires` headers may still apply).
+ */
+export type Cacheability = 'heuristic' | 'uncacheable';
+
 export interface RelatedHeader {
   readonly name: string;
   readonly required: boolean;
@@ -54,7 +62,14 @@ export interface HttpStatusMetadata {
   readonly specUrl: string;
   readonly description: string;
   readonly expectsEmptyBody: boolean;
-  readonly isCacheable: boolean | 'heuristic';
+  /**
+   * Cacheability by status alone, per RFC 9111 §4.2.2: `'heuristic'` if a cache
+   * MAY store the response without explicit freshness headers, else
+   * `'uncacheable'`. (Renamed from `isCacheable: boolean | 'heuristic'` in 2.0.1
+   * for a clean string enum; the `isCacheable()` predicate in `/utils` still
+   * exists and returns a boolean.)
+   */
+  readonly cacheability: Cacheability;
   readonly requiresAuth: boolean;
   readonly safeForMethods: readonly HttpMethod[] | 'all';
   readonly relatedHeaders: readonly RelatedHeader[];
