@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.2
+
+Discoverability only (no code/data changes).
+
+### Changed
+
+- Reworded the package description toward natural search terms ("HTTP status code
+  registry & lookup") and broadened keywords (http-status-codes,
+  status-code-lookup, http-response-codes, status-code-metadata, rest-api-errors).
+- Added a "Part of the @master4n toolkit" README section cross-linking siblings.
+
 ## 2.0.1
 
 API consistency for cacheability. (Released as a patch, but note the type changes

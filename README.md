@@ -164,6 +164,15 @@ IanaRegistry[200];             // full metadata (RFC, retry strategy, agent acti
 
 ---
 
+## Part of the @master4n toolkit
+
+A small ecosystem of focused, agent-friendly packages:
+
+- [`@master4n/temporal-transformer`](https://www.npmjs.com/package/@master4n/temporal-transformer) — epoch/timestamp ↔ date conversion with auto unit-detection and IANA timezones (Luxon-backed)
+- [`@master4n/temporal-transformer-codemod`](https://www.npmjs.com/package/@master4n/temporal-transformer-codemod) — codemod to migrate temporal-transformer v1→v2
+- [`@master4n/decorators`](https://www.npmjs.com/package/@master4n/decorators) — zero-dependency TypeScript decorators (DI, validation, resilience, redaction)
+- [`@master4n/master-cli`](https://www.npmjs.com/package/@master4n/master-cli) — headless, JSON-first dev CLI (`mfn`) for humans and AI agents
+
 ## License
 
 MIT © Master4Novice

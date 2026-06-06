@@ -1,7 +1,7 @@
 {
   "name": "@master4n/http-status",
-  "version": "2.0.1",
-  "description": "The machine-readable HTTP status registry, optimised for AI agents and RAG pipelines.",
+  "version": "2.0.2",
+  "description": "HTTP status code registry & lookup — machine-readable metadata for every HTTP status code (IANA, Cloudflare, Nginx), for apps and AI agents.",
   "type": "module",
   "private": false,
   "scripts": {
@@ -26,7 +26,12 @@
     "llm",
     "rest-api",
     "type-safe",
-    "tree-shaking"
+    "tree-shaking",
+    "http-status-codes",
+    "status-code-lookup",
+    "http-response-codes",
+    "status-code-metadata",
+    "rest-api-errors"
   ],
   "author": "master4n",
   "license": "MIT",
