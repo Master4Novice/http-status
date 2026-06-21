@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.3
+
+Dev-toolchain cleanup (no code/data changes; consumers unaffected).
+
+### Changed
+
+- Removed the `rimraf` devDependency; the `clean` script now uses Node's
+  built-in `fs.rmSync`. This drops the deprecated transitive `glob@10.5.0` and
+  clears the Socket `obfuscatedFile` warning on `rimraf`. The published tarball
+  is byte-identical.
+
 ## 2.0.2
 
 Discoverability only (no code/data changes).
