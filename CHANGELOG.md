@@ -2,7 +2,17 @@
 
 ## 2.0.3
 
-Dev-toolchain cleanup (no code/data changes; consumers unaffected).
+Dev-toolchain cleanup + security fixes (no code/data changes; consumers
+unaffected).
+
+### Security
+
+- Resolved a high-severity transitive `vite` advisory (bumped `vite` to 8.0.16
+  via `npm audit fix`, superseding the dependabot PR) and a low-severity
+  `esbuild` dev-server advisory (forced `esbuild` to `^0.28.1` via an
+  `overrides` entry so tsup/tsx/vite all dedupe to the patched line). `npm
+  audit` now reports 0 vulnerabilities. All dev-only; the published tarball is
+  unaffected.
 
 ### Changed
 
@@ -10,6 +20,7 @@ Dev-toolchain cleanup (no code/data changes; consumers unaffected).
   built-in `fs.rmSync`. This drops the deprecated transitive `glob@10.5.0` and
   clears the Socket `obfuscatedFile` warning on `rimraf`. The published tarball
   is byte-identical.
+- Bumped `tsx` to `^4.22.4`.
 
 ## 2.0.2
 
